@@ -1,0 +1,56 @@
+---
+title: "Lecture 3"
+output: 
+  html_document: 
+    toc: true
+    toc_float: true
+    code_folding: hide
+---
+
+```{r set up}
+library(tidyverse)
+```
+
+# Section 1
+
+Here's a **code chunk** that samples from 
+a _normal distribution_:
+
+```{r}
+samp = rnorm(100)
+length(samp)
+```
+The mean is `r mean(samp)`.
+
+# Section 2: Make a plot
+
+```{r basic plot}
+plot_df = tibble(
+  x = rnorm(1000, sd = .5),
+  y = 1 + 2 * x + rnorm(1000)
+)
+
+ggplot(plot_df, aes(x = x)) + 
+  geom_histogram()
+```
+
+# Section 3: Learning Assessment
+
+```{r exercise}
+exercise_df = tibble(
+  vec_numeric = rnorm(500, mean=1),
+  vec_logical = vec_numeric>0,
+  vec_abs = abs(vec_numeric)
+)
+
+ggplot(exercise_df, aes(x = vec_abs)) + 
+  geom_histogram()
+```
+
+* The mean is `r mean(samp)`.
+
+* The median is `r median(samp)`.
+
+* The standard deviation is `r sd(samp)`.
+
+
